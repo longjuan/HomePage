@@ -45,7 +45,7 @@
 
 默认图片位于`public/img`
 
-默认网页图标位于`E:\vueproject\homepage\public\favicon.ico`
+默认网页图标位于`public/favicon.ico`
 
 
 ## 项目运行
