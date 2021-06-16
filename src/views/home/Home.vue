@@ -48,6 +48,9 @@
       ></link-item>
       </transition-group>
     </div>
+    <div class="footer-info">
+      <!-- footer info -->
+    </div>
   </div>
 </template>
 
@@ -143,6 +146,13 @@ export default {
   }
   .slide-up-enter-from{
     transform: translateY(20px);
+  }
+  .footer-info{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 1px;
+    color: #dddddd;
   }
 }
 </style>
