@@ -36,7 +36,6 @@ export default {
   height: 100%;
   width: 40px;
   position: relative;
-  cursor:pointer;
 }
 .eng-img{
   position: absolute;
@@ -47,6 +46,7 @@ export default {
   left: 0;
   right: 0;
   margin: auto;
+  cursor:pointer;
 }
 .img-miss{
   width: 100%;
