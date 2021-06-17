@@ -29,7 +29,7 @@ export default {
         }
       }
 
-      let num = window.localStorage.getItem('searchEnginesActiveOrder');
+      let num = parseInt(window.localStorage.getItem('searchEnginesActiveOrder'));
       store.dispatch('updateSearchEnginesActiveOrder',num == null ? 0 : num);
     })
   }
