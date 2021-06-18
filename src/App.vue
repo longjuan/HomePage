@@ -29,8 +29,8 @@ export default {
         }
       }
 
-      let num = parseInt(window.localStorage.getItem('searchEnginesActiveOrder'));
-      store.dispatch('updateSearchEnginesActiveOrder',num == null ? 0 : num);
+      let num = window.localStorage.getItem('searchEnginesActiveOrder');
+      store.dispatch('updateSearchEnginesActiveOrder', num == null ? 0 : parseInt(num));
     })
   }
 }
