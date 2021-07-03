@@ -1,7 +1,9 @@
 <template>
-  <div class="link-item" @click="toLink">
+  <div class="link-item">
+    <a :href="url" target="_blank">
     <p><el-image :src="iconSrc" style="width: 4em;height: 4em;max-width: 96px;"></el-image></p>
     <p class="text-title">{{title}}</p>
+    </a>
   </div>
 </template>
 
@@ -12,15 +14,6 @@ export default {
     iconSrc: String,
     title: String,
     url: String
-  },
-  setup(props){
-    const toLink = () => {
-      window.location.href = props.url;
-    }
-
-    return {
-      toLink
-    }
   }
 }
 </script>
@@ -53,5 +46,8 @@ export default {
   margin: auto;
   padding-top: 3px;
   padding-bottom: 8px;
+}
+a{
+  text-decoration: none;
 }
 </style>
