@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@master # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
         with:
           persist-credentials: false
 
@@ -17,7 +17,7 @@ jobs:
           npm install
           npm run build
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@master
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} #secrets.ACCESS_TOKEN是项目配置的密钥
           BRANCH: HomePage # The branch the action should deploy to.
