@@ -2,7 +2,7 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
 module.exports = {
   publicPath: "./",
-  assetsDir: "static",
+  productionSourceMap: false,
   outputDir: 'dist',
   configureWebpack: config => {
     // 开发环境不需要gzip
