@@ -30,7 +30,7 @@
           @keydown.enter="toSearch"
       >
         <template #prefix>
-          <el-tooltip content="点击切换输入法" placement="bottom" effect="light" :show-after="500">
+          <el-tooltip content="点击切换搜索引擎" placement="bottom" effect="light" :show-after="500">
             <search-engines-switch></search-engines-switch>
           </el-tooltip>
         </template>
