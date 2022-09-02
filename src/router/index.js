@@ -49,8 +49,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to)=>{
-  document.title = to.meta.title;
+router.beforeEach((to, from, next)=>{
+  if(to.matched.length === 0){
+    next({path:"/"})
+  }else{
+    document.title = to.meta.title;
+    next()
+  }
 })
 
 export default router

@@ -2,14 +2,14 @@
 
   <div class="main-box">
     <div style="height: 30px;text-align: right;">
-      <el-affix :offset="20">
+      <el-affix style="padding-top: 20px;">
         <el-tooltip content="设置" placement="bottom" effect="light">
           <el-button icon="el-icon-setting" circle @click="$router.push({path:'/setting'})"></el-button>
         </el-tooltip>
         <el-tooltip content="更多信息" placement="bottom" effect="light">
           <el-button icon="el-icon-more-outline" circle @click="$router.push({path:'/info'})"></el-button>
         </el-tooltip>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+        <div style="display: inline-block;width: 20px;"></div>
       </el-affix>
     </div>
     <transition name="fade">
@@ -27,6 +27,8 @@
           class="input-text"
           :autofocus="true"
           :input-style="{'font-size':'17px'}"
+          @keydown.down="add(1)"
+          @keydown.up="add(-1)"
           @keydown.enter="toSearch"
       >
         <template #prefix>
@@ -72,11 +74,21 @@ export default {
     let input = ref("");
     let isShow = ref(!store.state.enterAnimation);
 
+    let lastFetch = [];
+    let backup = "";
+    let move = -1;
+
     const querySearchAsync = (queryString, cb) => {
-      let results = []
+      let results = [];
+      lastFetch = [];
+      move = -1;
+      backup = input.value;
       jsonp('https://suggestion.baidu.com/su?wd='+queryString,{callbackQuery: 'cb'}).then(res=>{
         res.s.forEach(item => results.push({value: item}));
         cb(results);
+        lastFetch = results;
+        move = -1;
+        backup = input.value;
       })
     };
 
@@ -90,11 +102,26 @@ export default {
       },1)
     })
 
+    const add = (num)=>{
+      move += num;
+      if(move > lastFetch.length-1){
+        move = lastFetch.length-1;
+      }
+
+      if(move < 0){
+        move = -1;
+        input.value = backup;
+      }else{
+        input.value = lastFetch[move].value;
+      }
+    }
+
     return {
       input,
       querySearchAsync,
       toSearch,
-      isShow
+      isShow,
+      add
     }
   }
 }
