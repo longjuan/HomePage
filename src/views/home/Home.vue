@@ -88,7 +88,6 @@ export default {
         cb(results);
         lastFetch = results;
         move = -1;
-        backup = input.value;
       })
     };
 
