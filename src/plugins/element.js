@@ -24,11 +24,11 @@ import {
   ElUpload,
   ElImage
 } from 'element-plus'
-import lang from 'element-plus/lib/locale/lang/zh-cn'
-import locale from 'element-plus/lib/locale'
+import lang from 'element-plus/es/locale/lang/zh-cn'
+import { use as localeUse } from 'element-plus/es/locale'
 
 export default (app) => {
-  locale.use(lang)
+  localeUse(lang)
   app.use(ElButton)
   app.use(ElAutocomplete)
   app.use(ElAffix)
