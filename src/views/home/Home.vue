@@ -29,7 +29,7 @@
           :input-style="{'font-size':'17px'}"
           @keydown.down="add(1)"
           @keydown.up="add(-1)"
-          @keydown.enter="toSearch"
+          @keydown.enter="handleEnter"
       >
         <template #prefix>
           <el-tooltip content="点击切换搜索引擎" placement="bottom" effect="light" :show-after="500">
@@ -115,12 +115,21 @@ export default {
       }
     }
 
+    const handleEnter = (event) => {
+      // macOS IME sends Enter before composition ends; guard until input finished composing
+      if (event && (event.isComposing || event.keyCode === 229)) {
+        return;
+      }
+      toSearch();
+    }
+
     return {
       input,
       querySearchAsync,
       toSearch,
       isShow,
-      add
+      add,
+      handleEnter
     }
   }
 }
